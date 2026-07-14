@@ -1,27 +1,27 @@
 name: Build and Update HTML branch
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run build
 
@@ -29,4 +29,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./app/dist
