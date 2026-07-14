@@ -33,4 +33,16 @@ Components, rode em outro terminal:
 npm start -w @kuma/webcomponents
 ```
 
-Utilize `npm run precommit` para todas validações cruciais da aplicação
+Utilize `npm run precommit` para todas validações cruciais da aplicação.
+
+## Testes
+
+O workspace `app` usa Vitest para teste unitário do `App.vue` e Playwright para
+o CUJ e2e da aplicação.
+
+O workspace `webcomponents` usa Playwright também para testes unitários em
+navegador real. Essa abordagem foi escolhida porque Web Components dependem de
+APIs reais do browser, como `customElements`, Shadow DOM, slots, atributos
+refletidos e estilos encapsulados. Hoje os testes validam comportamento e DOM dos
+componentes isolados; futuramente o mesmo runner pode cobrir regressão visual com
+snapshots de imagem usando `expect(locator).toHaveScreenshot(...)`.

@@ -10,7 +10,10 @@ export default tseslint.config(
   {
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      },
       sourceType: 'module'
     }
   },
