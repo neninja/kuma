@@ -1,48 +1,40 @@
 # Kuma
 
-Monorepo frontend usando npm workspaces para uma aplicacao local de divisao de
-despesas. A aplicacao roda inteira no navegador, sem backend e sem login.
+Kuma é uma aplicação frontend de conciliação de despesas. A aplicação não tem
+backend: tudo roda no navegador e o estado é salvo em `localStorage`.
 
-## Workspaces
+O nome do projeto vem de Bartholomew Kuma, personagem do One Piece que consegue
+remover a dor de outras pessoas.
 
-- `webcomponents`: biblioteca de Web Components com Lit.
-- `app`: aplicacao Vue de conciliacao de despesas que consome os Web Components.
+## Publicação
 
-## Scripts
+1. Instale as dependências:
 
 ```sh
 npm install
-npm start
+```
+
+2. Gere o build de produção:
+
+```sh
 npm run build
+```
+
+3. Valide o bundle localmente:
+
+```sh
 npm run preview
 ```
 
-O comando `npm start` inicia a aplicacao Vue em modo de desenvolvimento. Nesse
-modo, o Vite importa os sources de `@kuma/webcomponents/button` e
-`@kuma/webcomponents/money-card` antes da aplicacao montar, e o Lit pode exibir
-o aviso `Lit is in dev mode` no console.
+4. Publique o conteúdo de `app/dist` em uma hospedagem estática.
 
-O comando `npm run build` gera o bundle de producao em `app/dist`. Para validar
-esse bundle localmente, use `npm run preview`; abrir a aplicacao pelo servidor de
-desenvolvimento depois do build continua usando modo de desenvolvimento.
+O Vite do app está configurado com `base: '/kuma/'` em
+`app/vite.config.ts`. Se a aplicação for publicada em outro caminho, ajuste esse
+`base` antes do build.
 
-Para manter o pacote `webcomponents/dist` atualizado enquanto edita os Web
-Components, rode em outro terminal:
+## Documentação
 
-```sh
-npm start -w @kuma/webcomponents
-```
-
-Utilize `npm run precommit` para todas validações cruciais da aplicação.
-
-## Testes
-
-O workspace `app` usa Vitest para teste unitário do `App.vue` e Playwright para
-o CUJ e2e da aplicação.
-
-O workspace `webcomponents` usa Playwright também para testes unitários em
-navegador real. Essa abordagem foi escolhida porque Web Components dependem de
-APIs reais do browser, como `customElements`, Shadow DOM, slots, atributos
-refletidos e estilos encapsulados. Hoje os testes validam comportamento e DOM dos
-componentes isolados; futuramente o mesmo runner pode cobrir regressão visual com
-snapshots de imagem usando `expect(locator).toHaveScreenshot(...)`.
+- [CONTRIBUTING.md](./CONTRIBUTING.md): desenvolvimento, scripts, escolhas e
+  diretrizes.
+- [AGENTS.md](./AGENTS.md): contexto útil para agentes de IA.
+- [PRD.md](./PRD.md): resumo sucinto do produto.
