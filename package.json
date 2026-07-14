@@ -1,0 +1,23 @@
+{
+  "name": "kuma",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Frontend monorepo with Lit web components and a Vue app.",
+  "workspaces": [
+    "webcomponents",
+    "app"
+  ],
+  "scripts": {
+    "start": "npm start -w @kuma/app",
+    "build": "npm run build --workspaces",
+    "preview": "npm run preview -w @kuma/app",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "overrides": {
+    "typescript": "5.9.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
