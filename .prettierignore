@@ -4,5 +4,9 @@ dist
 **/dist
 coverage
 **/coverage
+playwright-report
+**/playwright-report
+test-results
+**/test-results
 app/dist
 webcomponents/dist
