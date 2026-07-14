@@ -12,6 +12,10 @@
     "dev": "npm run dev -w @kuma/app",
     "start": "npm run dev",
     "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
+    "format": "npm run format --workspaces",
+    "format:check": "npm run format:check --workspaces",
     "preview": "npm run preview -w @kuma/app",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },

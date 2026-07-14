@@ -276,7 +276,9 @@ const settlements = computed<Settlement[]>(() => {
 
 const canAddParticipant = computed(() => participantName.value.trim().length > 0);
 const canAddExpense = computed(() => {
-  const payerExists = participants.value.some((participant) => participant.id === expenseForm.payerId);
+  const payerExists = participants.value.some(
+    (participant) => participant.id === expenseForm.payerId
+  );
 
   return (
     payerExists &&
@@ -397,7 +399,10 @@ function clearAll() {
 }
 
 function participantNameById(participantId: string) {
-  return participants.value.find((participant) => participant.id === participantId)?.name ?? 'Participante';
+  return (
+    participants.value.find((participant) => participant.id === participantId)?.name ??
+    'Participante'
+  );
 }
 
 function balanceClass(cents: number) {
@@ -434,12 +439,7 @@ function balanceText(cents: number) {
       </div>
 
       <div class="header-actions">
-        <kuma-button
-          :disabled="!canClearAll"
-          type="button"
-          variant="danger"
-          @click="clearAll"
-        >
+        <kuma-button :disabled="!canClearAll" type="button" variant="danger" @click="clearAll">
           Limpar tudo
         </kuma-button>
       </div>
@@ -500,9 +500,17 @@ function balanceText(cents: number) {
         <form class="expense-form" @submit.prevent="addExpense">
           <div class="field">
             <label for="expense-payer">Pago por</label>
-            <select id="expense-payer" v-model="expenseForm.payerId" :disabled="participants.length === 0">
+            <select
+              id="expense-payer"
+              v-model="expenseForm.payerId"
+              :disabled="participants.length === 0"
+            >
               <option disabled value="">Selecione</option>
-              <option v-for="participant in participants" :key="participant.id" :value="participant.id">
+              <option
+                v-for="participant in participants"
+                :key="participant.id"
+                :value="participant.id"
+              >
                 {{ participant.name }}
               </option>
             </select>
