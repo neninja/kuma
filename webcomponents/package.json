@@ -7,11 +7,17 @@
     "dist"
   ],
   "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "development": "./src/index.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+    "./button": {
+      "types": "./src/kuma-button.ts",
+      "development": "./src/kuma-button.ts",
+      "import": "./dist/kuma-button.js",
+      "default": "./dist/kuma-button.js"
+    },
+    "./money-card": {
+      "types": "./src/kuma-money-card.ts",
+      "development": "./src/kuma-money-card.ts",
+      "import": "./dist/kuma-money-card.js",
+      "default": "./dist/kuma-money-card.js"
     }
   },
   "scripts": {
