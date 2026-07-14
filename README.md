@@ -32,3 +32,5 @@ Components, rode em outro terminal:
 ```sh
 npm start -w @kuma/webcomponents
 ```
+
+Utilize `npm run precommit` para todas validações cruciais da aplicação
